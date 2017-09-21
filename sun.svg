@@ -1,0 +1,292 @@
+<svg
+	version		= "1.1"
+	xmlns		= "http://www.w3.org/2000/svg"
+	xmlns:xlink	= "http://www.w3.org/1999/xlink"
+	viewBox	= "0 0 128 256"
+>
+	<defs>
+		<clipPath
+			id	= "sunstripes"
+		>
+			<rect
+				x		= "0"
+				width	= "128"
+				
+				y		= "126"
+				height	= "2"
+			>
+			>
+				<animate
+					attributeName	= "y"
+					from			= "126"
+					to				= "128"
+					dur				= "1.5s"
+					repeatCount		= "indefinite"
+				/>
+				
+				<animate
+					attributeName	= "height"
+					from			= "2"
+					to				= "0"
+					dur				= "1.5s"
+					repeatCount		= "indefinite"
+				/>
+			</rect>
+			
+			<rect
+				x		= "0"
+				width	= "128"
+				
+				y		= "120"
+				height	= "3"
+			>
+				<animate
+					attributeName	= "y"
+					from			= "120"
+					to				= "126"
+					dur				= "1.5s"
+					repeatCount		= "indefinite"
+				/>
+				
+				<animate
+					attributeName	= "height"
+					from			= "3"
+					to				= "2"
+					dur				= "1.5s"
+					repeatCount		= "indefinite"
+				/>
+			</rect>
+			
+			<rect
+				x		= "0"
+				width	= "128"
+				
+				y		= "112"
+				height	= "4"
+			>
+				<animate
+					attributeName	= "y"
+					from			= "112"
+					to				= "120"
+					dur				= "1.5s"
+					repeatCount		= "indefinite"
+				/>
+				
+				<animate
+					attributeName	= "height"
+					from			= "4"
+					to				= "3"
+					dur				= "1.5s"
+					repeatCount		= "indefinite"
+				/>
+			</rect>
+			
+			<rect
+				x		= "0"
+				width	= "128"
+				
+				y		= "102"
+				height	= "5"
+			>
+				<animate
+					attributeName	= "y"
+					from			= "102"
+					to				= "112"
+					dur				= "1.5s"
+					repeatCount		= "indefinite"
+				/>
+				
+				<animate
+					attributeName	= "height"
+					from			= "5"
+					to				= "4"
+					dur				= "1.5s"
+					repeatCount		= "indefinite"
+				/>
+			</rect>
+			
+			<rect
+				x		= "0"
+				width	= "128"
+				
+				y		= "90"
+				height	= "6"
+			>
+				<animate
+					attributeName	= "y"
+					from			= "90"
+					to				= "102"
+					dur				= "1.5s"
+					repeatCount		= "indefinite"
+				/>
+				
+				<animate
+					attributeName	= "height"
+					from			= "6"
+					to				= "5"
+					dur				= "1.5s"
+					repeatCount		= "indefinite"
+				/>
+			</rect>
+			
+			<rect
+				x		= "0"
+				width	= "128"
+				
+				y		= "76"
+				height	= "7"
+			>
+				<animate
+					attributeName	= "y"
+					from			= "76"
+					to				= "90"
+					dur				= "1.5s"
+					repeatCount		= "indefinite"
+				/>
+				
+				<animate
+					attributeName	= "height"
+					from			= "7"
+					to				= "6"
+					dur				= "1.5s"
+					repeatCount		= "indefinite"
+				/>
+			</rect>
+			
+			<rect
+				x		= "0"
+				width	= "128"
+				
+				y		= "60"
+				height	= "8"
+			>
+				<animate
+					attributeName	= "y"
+					from			= "60"
+					to				= "76"
+					dur				= "1.5s"
+					repeatCount		= "indefinite"
+				/>
+				
+				<animate
+					attributeName	= "height"
+					from			= "8"
+					to				= "7"
+					dur				= "1.5s"
+					repeatCount		= "indefinite"
+				/>
+			</rect>
+			
+			<rect
+				x		= "0"
+				width	= "128"
+				
+				y		= "22"
+				height	= "10"
+			>
+				<animate
+					attributeName	= "y"
+					from			= "48"
+					to				= "60"
+					dur				= "1.5s"
+					repeatCount		= "indefinite"
+				/>
+				
+				<animate
+					attributeName	= "height"
+					from			= "2"
+					to				= "8"
+					dur				= "1.5s"
+					repeatCount		= "indefinite"
+				/>
+			</rect>
+			
+			<rect
+				x		= "0"
+				width	= "128"
+				
+				y		= "0"
+				height	= "50"
+			/>
+		</clipPath>
+		
+		<linearGradient
+			id	= "pinkbluev"
+			
+			gradientTransform	= "rotate(90)"
+		>
+			<stop
+				offset			= "0"
+				stop-color		= "cyan"
+				stop-opacity	= "1"
+			/>
+			
+			<stop
+				offset			= "0.5"
+				stop-color		= "purple"
+				stop-opacity	= "1"
+			/>
+			
+			<stop
+				offset			= "1"
+				stop-color		= "hotpink"
+				stop-opacity	= "1"
+			/>
+		</linearGradient>
+		
+		<filter
+			id	= "splash"
+		>
+			<feTurbulence
+				type			= "fractalNoise"
+				baseFrequency	= "0.125"
+				numOctaves		= "1"
+				seed			= "2"
+				result			= "turb1"
+			/>
+			
+			<feDisplacementMap
+				in		= "SourceGraphic"
+				in2		= "turb1"
+				scale	= "1"
+				result	= "turb2"
+			/>
+			
+			<feGaussianBlur
+				stdDeviation	= "0.1"
+				in	= "turb2"
+				out	= "turb2"
+			/>
+		</filter>
+		
+		<g
+			id	= "sun"
+		>
+			<circle
+				cx	= "64"
+				cy	= "64"
+				r	= "60"
+				
+				clip-path	= "url(#sunstripes)"
+				
+				fill		= "url(#pinkbluev)"
+			/>
+		</g>
+	</defs>
+	
+	<use
+		xlink:href	= "#sun"
+		
+		dy	= "64"
+	/>
+	
+	<use
+		xlink:href	= "#sun"
+		
+		y	= "128"
+		
+		opacity		= "0.8"
+		transform	= "rotate(180 64 192)"
+		filter		= "url(#splash)"
+	/>
+</svg>
