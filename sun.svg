@@ -20,7 +20,7 @@
 					attributeName	= "y"
 					from			= "126"
 					to				= "128"
-					dur				= "1.5s"
+					dur				= "2s"
 					repeatCount		= "indefinite"
 				/>
 				
@@ -28,7 +28,7 @@
 					attributeName	= "height"
 					from			= "2"
 					to				= "0"
-					dur				= "1.5s"
+					dur				= "2s"
 					repeatCount		= "indefinite"
 				/>
 			</rect>
@@ -44,7 +44,7 @@
 					attributeName	= "y"
 					from			= "120"
 					to				= "126"
-					dur				= "1.5s"
+					dur				= "2s"
 					repeatCount		= "indefinite"
 				/>
 				
@@ -52,7 +52,7 @@
 					attributeName	= "height"
 					from			= "3"
 					to				= "2"
-					dur				= "1.5s"
+					dur				= "2s"
 					repeatCount		= "indefinite"
 				/>
 			</rect>
@@ -68,7 +68,7 @@
 					attributeName	= "y"
 					from			= "112"
 					to				= "120"
-					dur				= "1.5s"
+					dur				= "2s"
 					repeatCount		= "indefinite"
 				/>
 				
@@ -76,7 +76,7 @@
 					attributeName	= "height"
 					from			= "4"
 					to				= "3"
-					dur				= "1.5s"
+					dur				= "2s"
 					repeatCount		= "indefinite"
 				/>
 			</rect>
@@ -92,7 +92,7 @@
 					attributeName	= "y"
 					from			= "102"
 					to				= "112"
-					dur				= "1.5s"
+					dur				= "2s"
 					repeatCount		= "indefinite"
 				/>
 				
@@ -100,7 +100,7 @@
 					attributeName	= "height"
 					from			= "5"
 					to				= "4"
-					dur				= "1.5s"
+					dur				= "2s"
 					repeatCount		= "indefinite"
 				/>
 			</rect>
@@ -116,7 +116,7 @@
 					attributeName	= "y"
 					from			= "90"
 					to				= "102"
-					dur				= "1.5s"
+					dur				= "2s"
 					repeatCount		= "indefinite"
 				/>
 				
@@ -124,7 +124,7 @@
 					attributeName	= "height"
 					from			= "6"
 					to				= "5"
-					dur				= "1.5s"
+					dur				= "2s"
 					repeatCount		= "indefinite"
 				/>
 			</rect>
@@ -140,7 +140,7 @@
 					attributeName	= "y"
 					from			= "76"
 					to				= "90"
-					dur				= "1.5s"
+					dur				= "2s"
 					repeatCount		= "indefinite"
 				/>
 				
@@ -148,7 +148,7 @@
 					attributeName	= "height"
 					from			= "7"
 					to				= "6"
-					dur				= "1.5s"
+					dur				= "2s"
 					repeatCount		= "indefinite"
 				/>
 			</rect>
@@ -164,7 +164,7 @@
 					attributeName	= "y"
 					from			= "60"
 					to				= "76"
-					dur				= "1.5s"
+					dur				= "2s"
 					repeatCount		= "indefinite"
 				/>
 				
@@ -172,7 +172,7 @@
 					attributeName	= "height"
 					from			= "8"
 					to				= "7"
-					dur				= "1.5s"
+					dur				= "2s"
 					repeatCount		= "indefinite"
 				/>
 			</rect>
@@ -188,7 +188,7 @@
 					attributeName	= "y"
 					from			= "48"
 					to				= "60"
-					dur				= "1.5s"
+					dur				= "2s"
 					repeatCount		= "indefinite"
 				/>
 				
@@ -196,7 +196,7 @@
 					attributeName	= "height"
 					from			= "2"
 					to				= "8"
-					dur				= "1.5s"
+					dur				= "2s"
 					repeatCount		= "indefinite"
 				/>
 			</rect>
@@ -253,6 +253,30 @@
 			/>
 		</filter>
 		
+		<filter
+			id		= "glow"
+			x		= "-30%"
+			y		= "-30%"
+			width	= "160%"
+			height	= "160%"
+		>
+			<feGaussianBlur
+				stdDeviation	= "5 5"
+				result			= "glow"
+			/>
+			<feMerge>
+				<feMergeNode
+					in	= "glow"
+				/>
+				<feMergeNode
+					in	= "glow"
+				/>
+				<feMergeNode
+					in	= "glow"
+				/>
+			</feMerge>
+		</filter>
+		
 		<g
 			id	= "sun"
 		>
@@ -264,6 +288,40 @@
 				clip-path	= "url(#sunstripes)"
 				
 				fill		= "url(#pinkbluev)"
+			/>
+		</g>
+		
+		<g
+			id	= "trianglesrc"
+		>
+			<path
+				d	= "
+					M69 116
+					59 116
+					17 44
+					22 35
+					106 35
+					111 44
+					Z
+					"
+				
+				fill			= "none"
+				stroke			= "cyan"
+				stroke-width	= "2"
+			/>
+		</g>
+		
+		<g
+			id	= "triangle"
+		>
+			<use
+				xlink:href	= "#trianglesrc"
+				
+				filter	= "url(#glow)"
+			/>
+			
+			<use
+				xlink:href	= "#trianglesrc"
 			/>
 		</g>
 	</defs>
@@ -283,4 +341,17 @@
 		transform	= "rotate(180 64 192)"
 		filter		= "url(#splash)"
 	/>
+	
+	<use
+		xlink:href	= "#triangle"
+	/>
+	
+	<use
+		xlink:href	= "#triangle"
+		
+		opacity		= "0.8"
+		transform	= "scale(1, -1) translate(0, -256)"
+		filter		= "url(#splash)"
+	/>
+	
 </svg>
