@@ -288,12 +288,6 @@
 			/>
 			
 			<stop
-				offset			= "0.01"
-				stop-color		= "white"
-				stop-opacity	= "0"
-			/>
-			
-			<stop
 				offset			= "0.25"
 				stop-color		= "white"
 				stop-opacity	= "1"
@@ -316,6 +310,43 @@
 				height	= "128"
 				
 				fill	= "url(#fadefromwhite)"
+			/>
+		</mask>
+		
+		<linearGradient
+			id	= "fadefromwhite2"
+			
+			gradientTransform	= "rotate(90)"
+		>
+			<stop
+				offset			= "0"
+				stop-color		= "white"
+				stop-opacity	= "0"
+			/>
+			
+			<stop
+				offset			= "0.6"
+				stop-color		= "white"
+				stop-opacity	= "1"
+			/>
+			
+			<stop
+				offset			= "1"
+				stop-color		= "white"
+				stop-opacity	= "1"
+			/>
+		</linearGradient>
+		
+		<mask
+			id	= "fadetohorizon2"
+		>
+			<rect
+				x		= "-1000"
+				y		= "128"
+				width	= "2000"
+				height	= "128"
+				
+				fill	= "url(#fadefromwhite2)"
 			/>
 		</mask>
 		
@@ -450,7 +481,7 @@
 		<!-- reflection -->
 		<g
 			opacity		= "0.7"
-			mask		= "url(#fadetohorizon)"
+			mask		= "url(#fadetohorizon2)"
 			filter		= "url(#splash)"
 		>
 			<use
