@@ -2,20 +2,19 @@
 	version		= "1.1"
 	xmlns		= "http://www.w3.org/2000/svg"
 	xmlns:xlink	= "http://www.w3.org/1999/xlink"
-	viewBox	= "0 0 128 256"
+	viewBox		= "0 0 256 256"
 >
 	<defs>
 		<clipPath
 			id	= "sunstripes"
 		>
 			<rect
-				x		= "0"
+				x		= "64"
 				width	= "128"
 				
 				y		= "126"
 				height	= "2"
-			>
-			>
+			><!--
 				<animate
 					attributeName	= "y"
 					from			= "126"
@@ -31,15 +30,15 @@
 					dur				= "2s"
 					repeatCount		= "indefinite"
 				/>
-			</rect>
+			--></rect>
 			
 			<rect
-				x		= "0"
+				x		= "64"
 				width	= "128"
 				
 				y		= "120"
 				height	= "3"
-			>
+			><!--
 				<animate
 					attributeName	= "y"
 					from			= "120"
@@ -55,15 +54,15 @@
 					dur				= "2s"
 					repeatCount		= "indefinite"
 				/>
-			</rect>
+			--></rect>
 			
 			<rect
-				x		= "0"
+				x		= "64"
 				width	= "128"
 				
 				y		= "112"
 				height	= "4"
-			>
+			><!--
 				<animate
 					attributeName	= "y"
 					from			= "112"
@@ -79,15 +78,15 @@
 					dur				= "2s"
 					repeatCount		= "indefinite"
 				/>
-			</rect>
+			--></rect>
 			
 			<rect
-				x		= "0"
+				x		= "64"
 				width	= "128"
 				
 				y		= "102"
 				height	= "5"
-			>
+			><!--
 				<animate
 					attributeName	= "y"
 					from			= "102"
@@ -103,15 +102,15 @@
 					dur				= "2s"
 					repeatCount		= "indefinite"
 				/>
-			</rect>
+			--></rect>
 			
 			<rect
-				x		= "0"
+				x		= "64"
 				width	= "128"
 				
 				y		= "90"
 				height	= "6"
-			>
+			><!--
 				<animate
 					attributeName	= "y"
 					from			= "90"
@@ -127,15 +126,15 @@
 					dur				= "2s"
 					repeatCount		= "indefinite"
 				/>
-			</rect>
+			--></rect>
 			
 			<rect
-				x		= "0"
+				x		= "64"
 				width	= "128"
 				
 				y		= "76"
 				height	= "7"
-			>
+			><!--
 				<animate
 					attributeName	= "y"
 					from			= "76"
@@ -151,15 +150,15 @@
 					dur				= "2s"
 					repeatCount		= "indefinite"
 				/>
-			</rect>
+			--></rect>
 			
 			<rect
-				x		= "0"
+				x		= "64"
 				width	= "128"
 				
 				y		= "60"
 				height	= "8"
-			>
+			><!--
 				<animate
 					attributeName	= "y"
 					from			= "60"
@@ -175,15 +174,15 @@
 					dur				= "2s"
 					repeatCount		= "indefinite"
 				/>
-			</rect>
+			--></rect>
 			
 			<rect
-				x		= "0"
+				x		= "64"
 				width	= "128"
 				
 				y		= "22"
 				height	= "10"
-			>
+			><!--
 				<animate
 					attributeName	= "y"
 					from			= "48"
@@ -199,10 +198,11 @@
 					dur				= "2s"
 					repeatCount		= "indefinite"
 				/>
+			-->
 			</rect>
 			
 			<rect
-				x		= "0"
+				x		= "64"
 				width	= "128"
 				
 				y		= "0"
@@ -233,6 +233,43 @@
 				stop-opacity	= "1"
 			/>
 		</linearGradient>
+		
+		<linearGradient
+			id	= "fadefromwhite"
+			
+			gradientTransform	= "rotate(90)"
+		>
+			<stop
+				offset			= "0"
+				stop-color		= "white"
+				stop-opacity	= "0"
+			/>
+			
+			<stop
+				offset			= "0.25"
+				stop-color		= "white"
+				stop-opacity	= "1"
+			/>
+			
+			<stop
+				offset			= "1"
+				stop-color		= "white"
+				stop-opacity	= "1"
+			/>
+		</linearGradient>
+		
+		<mask
+			id	= "fadetohorizon"
+		>
+			<rect
+				x		= "0"
+				y		= "128"
+				width	= "256"
+				height	= "128"
+				
+				fill	= "url(#fadefromwhite)"
+			/>
+		</mask>
 		
 		<filter
 			id	= "splash"
@@ -277,13 +314,37 @@
 			</feMerge>
 		</filter>
 		
+		<filter
+			id		= "smallglow"
+			x		= "-30%"
+			y		= "-30%"
+			width	= "160%"
+			height	= "160%"
+		>
+			<feGaussianBlur
+				stdDeviation	= "2 2"
+				result			= "glow"
+			/>
+			<feMerge>
+				<feMergeNode
+					in	= "glow"
+				/>
+				<feMergeNode
+					in	= "glow"
+				/>
+				<feMergeNode
+					in	= "glow"
+				/>
+			</feMerge>
+		</filter>
+		
 		<g
 			id	= "sun"
 		>
 			<circle
-				cx	= "64"
+				cx	= "128"
 				cy	= "64"
-				r	= "60"
+				r	= "64"
 				
 				clip-path	= "url(#sunstripes)"
 				
@@ -296,12 +357,12 @@
 		>
 			<path
 				d	= "
-					M69 116
-					59 116
-					17 44
-					22 35
-					106 35
-					111 44
+					M133 116
+					123 116
+					81 44
+					86 35
+					170 35
+					175 44
 					Z
 					"
 				
@@ -328,29 +389,32 @@
 	
 	<use
 		xlink:href	= "#sun"
-		
-		dy	= "64"
 	/>
 	
-	<use
-		xlink:href	= "#sun"
-		
-		y	= "128"
-		
-		opacity		= "0.8"
-		transform	= "rotate(180 64 192)"
-		filter		= "url(#splash)"
-	/>
+	<g
+		mask		= "url(#fadetohorizon)"
+	>
+		<use
+			xlink:href	= "#sun"
+			
+			y	= "128"
+			
+			opacity		= "0.7"
+			transform	= "rotate(180 128 192)"
+			filter		= "url(#splash)"
+		/>
+	</g>
 	
 	<use
 		xlink:href	= "#triangle"
 	/>
 	
-	<use
-		xlink:href	= "#triangle"
+	<path
+		class	= "JS_gridroad"
 		
-		opacity		= "0.8"
-		transform	= "scale(1, -1) translate(0, -256)"
+		fill	= "none"
+		stroke	= "cyan"
+		mask	= "url(#fadetohorizon)"
 	/>
 	
 </svg>
