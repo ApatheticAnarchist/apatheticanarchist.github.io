@@ -10,9 +10,26 @@
 		'DOMContentLoaded',
 		function() {
 			
+			var	t;
+			
 			getSVG(
 				'/sun.svg',
 				drawRoad
+			);
+			
+			// debounced resize listener
+			window.addEventListener(
+				'resize',
+				function() {
+					
+					clearTimeout( t );
+					
+					t	= setTimeout(
+							sizeSVG,
+							25
+						);
+					
+				}
 			);
 			
 		}
@@ -32,6 +49,8 @@
 						
 						document.body.innerHTML	= document.body.innerHTML + str;
 						
+						sizeSVG();
+						
 						then && then( str, path );
 						
 					}
@@ -39,6 +58,44 @@
 				
 			}
 		);
+		
+	}
+	
+	
+	
+	function sizeSVG() {
+		
+		var	svg	= document.querySelector( 'svg' ),
+			g	= svg.querySelector( '.everything' ),
+			vb	= svg.getAttribute( 'data-viewBox' ) || svg.getAttribute( 'viewBox' ),
+			
+			wh	= window.innerHeight,
+			ww	= window.innerWidth,
+			
+			ox;
+		
+		svg.setAttribute( 'data-viewBox', vb );
+		
+		vb	= vb.split( ' ' );
+		
+		ox	= vb[ 2 ];
+		
+		if ( ww > wh ) {
+			
+			vb[ 2 ]	= Math.round( vb[ 2 ] * ( ww / wh ) );
+			
+		}
+		
+		g.setAttribute(
+			'transform',
+			'translate(' + Math.round( ( vb[ 2 ] - ox ) / 2 ) + ', 0)'
+		);
+		
+		console.log( Math.round( ( vb[ 2 ] - ox ) / 2 ) );
+		
+		svg.setAttribute( 'viewBox', vb.join( ' ' ) );
+		
+		svg.setAttribute( 'width', ww );
 		
 	}
 	
@@ -84,7 +141,7 @@
 		for (
 			j = 0.5, k = 8;
 			j <= k;
-			j += 0.5
+			j += 0.33
 		) {
 			
 			arr.push(
@@ -105,11 +162,11 @@
 				
 				if ( ! ( idx % 2 ) ) {
 					
-					str	+= 'M' + Math.round( p[ 0 ] ) + ' ' + Math.round( p[ 1 ] );
+					str	+= 'M' + Math.ceil( p[ 0 ] ) + ' ' + Math.round( p[ 1 ] );
 					
 				} else {
 					
-					str	+= ' ' + Math.round( p[ 0 ] ) + ' ' + Math.round( p[ 1 ] );
+					str	+= ' ' + Math.floor( p[ 0 ] ) + ' ' + Math.round( p[ 1 ] );
 					
 				}
 				

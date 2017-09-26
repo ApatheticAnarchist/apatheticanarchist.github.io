@@ -235,12 +235,60 @@
 		</linearGradient>
 		
 		<linearGradient
+			id	= "gridgrad"
+			
+			gradientTransform	= "rotate(90)"
+		>
+			<stop
+				offset			= "0"
+				stop-color		= "white"
+				stop-opacity	= "1"
+			/>
+			
+			<stop
+				offset			= "0.1"
+				stop-color		= "yellow"
+				stop-opacity	= "1"
+			/>
+			
+			<stop
+				offset			= "0.2"
+				stop-color		= "orange"
+				stop-opacity	= "1"
+			/>
+			
+			<stop
+				offset			= "0.3"
+				stop-color		= "orange"
+				stop-opacity	= "1"
+			/>
+			
+			<stop
+				offset			= "0.6"
+				stop-color		= "yellow"
+				stop-opacity	= "1"
+			/>
+			
+			<stop
+				offset			= "1"
+				stop-color		= "white"
+				stop-opacity	= "1"
+			/>
+		</linearGradient>
+		
+		<linearGradient
 			id	= "fadefromwhite"
 			
 			gradientTransform	= "rotate(90)"
 		>
 			<stop
 				offset			= "0"
+				stop-color		= "white"
+				stop-opacity	= "0"
+			/>
+			
+			<stop
+				offset			= "0.01"
 				stop-color		= "white"
 				stop-opacity	= "0"
 			/>
@@ -262,9 +310,9 @@
 			id	= "fadetohorizon"
 		>
 			<rect
-				x		= "0"
+				x		= "-1000"
 				y		= "128"
-				width	= "256"
+				width	= "2000"
 				height	= "128"
 				
 				fill	= "url(#fadefromwhite)"
@@ -344,7 +392,7 @@
 			<circle
 				cx	= "128"
 				cy	= "64"
-				r	= "64"
+				r	= "59"
 				
 				clip-path	= "url(#sunstripes)"
 				
@@ -387,34 +435,47 @@
 		</g>
 	</defs>
 	
-	<use
-		xlink:href	= "#sun"
-	/>
-	
 	<g
-		mask		= "url(#fadetohorizon)"
+		class	= "everything"
 	>
+		
 		<use
 			xlink:href	= "#sun"
-			
-			y	= "128"
-			
-			opacity		= "0.7"
-			transform	= "rotate(180 128 192)"
-			filter		= "url(#splash)"
 		/>
-	</g>
-	
-	<use
-		xlink:href	= "#triangle"
-	/>
-	
-	<path
-		class	= "JS_gridroad"
 		
-		fill	= "none"
-		stroke	= "cyan"
-		mask	= "url(#fadetohorizon)"
-	/>
+		<use
+			xlink:href	= "#triangle"
+		/>
+		
+		<!-- reflection -->
+		<g
+			opacity		= "0.7"
+			mask		= "url(#fadetohorizon)"
+			filter		= "url(#splash)"
+		>
+			<use
+				xlink:href	= "#sun"
+				
+				y	= "128"
+				
+				transform	= "rotate(180 128 192)"
+			/>
+			
+			<use
+				xlink:href	= "#triangle"
+				
+				transform	= "scale(1, -1) translate(0, -256)"
+			/>
+		</g>
+		
+		<path
+			class	= "JS_gridroad"
+			
+			fill	= "none"
+			stroke	= "url(#gridgrad)"
+			mask	= "url(#fadetohorizon)"
+		/>
+		
+	</g>
 	
 </svg>
