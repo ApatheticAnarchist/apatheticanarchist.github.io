@@ -1,0 +1,521 @@
+/* TODO: if it gets much more complicated I'm going	*
+ *		 to want to transfer all of this to sass	*/
+
+html, body {
+background: #222 url('../img/star-bg4.jpg') repeat;
+color: #fff;
+font-family: Puritan, Arial, sans-serif;/*"Droid Sans Mono", monospace;*/
+font-weight: bold;
+height: 100%;
+overflow: hidden;
+postion: relative;
+}
+body > * {
+position: absolute;
+z-index: 10;
+}
+body > canvas {
+/*cursor: none;*/
+position: absolute;
+top: 0;
+z-index: 9;
+}
+body > table td {
+padding: 0.5em 1em;
+}
+a {
+color: #fff;
+}
+
+#intro, #outro, #help {
+height: 100%;
+opacity: 1;
+overflow: hidden;
+position: relative;
+-ie-transition: all 0.5s;
+-moz-transition: all 0.5s;
+-webkit-transition: all 0.5s;
+transition: all 0.5s;
+width: 100%;
+z-index: 100;
+}
+#intro > div.cornerbanner {
+background: #f30;
+border: none;
+border-radius: 4px;
+left: -5em;
+margin: 0;
+padding: 0.25em 0 0.3em;
+position: absolute;
+text-align: center;
+top: 5em;
+-ie-transform: rotate(-45deg);
+-moz-transform: rotate(-45deg);
+-webkit-transform: rotate(-45deg);
+transform: rotate(-h45deg);
+width: 20em;
+}
+#intro > form, #outro > div, #help > div {
+background: #111;
+border: 6px #555 outset;
+display: block;
+margin: 0 auto;
+padding: 1.5em;
+position: relative;
+top: 2em;
+width: 28em;
+}
+#intro > form > *, #outro > div > *, #help > div > * {
+margin-bottom: 1.5em;
+text-align: center;
+}
+#intro > form > *:last-child, #outro > div > *:last-child, #help > div > *:last-child {
+margin-bottom: 0;
+}
+#intro h1, #outro h1, #help h1 {
+font-size: 300%;
+margin-bottom: 0.3em;
+}
+#intro h1 img, #outro h1 img, #help h1 img {
+margin: 0 0.25em;
+vertical-align: top;
+}
+#intro h2, #outro h2, #help h2 {
+font-size: 150%;
+margin-bottom: 1em;
+}
+#intro label {
+display: block;
+}
+#intro > form > label > input[type="text"] {
+border: #444 2px inset;
+background: #111;
+color: #fff;
+padding: 0.2em 0.3em;
+text-align: center;
+}
+#intro > form > label > input:focus {
+outline: 1px dotted #fff;;
+}
+#intro > form > input {
+border: #444 2px outset;
+background: #bbb;
+color: #111;
+display: block;
+font-size: 200%;
+margin: 0 auto;
+padding: 0.3em 0.6em;
+width: 5em;
+}
+#intro > form > input:focus, #intro > form > input:active {
+outline: 2px #bbb solid;
+}
+#intro > form > a {
+position: absolute;
+}
+#hi-score-link {
+bottom: 0;
+right: 1.5em;
+}
+#help-link {
+bottom: 0;
+left: 1.5em;
+}
+
+#ship_select {
+display: block;
+/*font-size: 16px;*/
+margin-bottom: 0.75em !important;
+/*-webkit-mask-image: -webkit-gradient(linear, left top, left bottom, 
+	from(rgba(0,0,0,0)), 
+	to(rgba(0,0,0,0)), 
+	color-stop(10%, rgba(0,0,0,1)), 
+	color-stop(90%, rgba(0,0,0,1)));*/
+max-height: 130px;
+overflow-x: hidden;
+overflow-y: scroll;
+position: relative;
+text-align: center;
+}
+    #ship_select::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
+    ::-webkit-scrollbar-button:start:decrement,
+    ::-webkit-scrollbar-button:end:increment  {
+        display: none;
+    }
+     
+    ::-webkit-scrollbar-track-piece  {
+        background-color: #3b3b3b;
+        -webkit-border-radius: 6px;
+    }
+     
+    ::-webkit-scrollbar-thumb:vertical {
+        -webkit-border-radius: 6px;
+        background: #666;
+    }
+#ship_select label {
+border-radius: 0.5em;
+display: inline-block;
+font-size: 75%;
+margin: 0.5em 0;
+overflow: hidden;
+padding: 1em 0;
+position: relative;
+-ie-transition: all 0.5s;
+-moz-transition: all 0.5s;
+-webkit-transition: all 0.5s;
+transition: all 0.5s;
+width: 9em;
+}
+
+#ship_select label > span.lockedSpan {
+background: #f30;
+border-radius: 4px;
+display: block;
+font-size: 10px;
+left: 10%;
+padding: 2px 0;
+position: absolute;
+text-align: center;
+top: 38px;
+-ie-transform: rotate(-45deg);
+-moz-transform: rotate(-45deg);
+-webkit-transform: rotate(-45deg);
+transform: rotate(-45deg);
+width: 80%;
+z-index: 100;
+}
+#ship_select label > div {
+cursor: pointer;
+}
+#ship_select label > div, div.shipdisplay {
+background-image: url(../img/shipsprite.png), url('../img/star-bg4.jpg');
+border: #444 2px inset;
+height: 64px;
+margin: 0 auto 1em;
+width: 64px;
+z-index: 10;
+}
+#ship_select label > div > *, div.shipdisplay > * {
+background: #222;
+border: #444 1px outset;
+font-size: 9px;
+margin: 3px auto 0;
+opacity: 0;
+-ie-transition: all 0.5s;
+-moz-transition: all 0.5s;
+-webkit-transition: all 0.5s;
+transition: all 0.5s;
+width: 56px;
+}
+#ship_select label > div > div, div.shipdisplay > div {
+color: #fff;
+position: relative;
+}
+#ship_select label:hover > div, div.shipdisplay:hover {
+box-shadow: inset 0 0 16px #fff;
+}
+#ship_select label:hover > div > *, div.shipdisplay:hover > * {
+opacity: 0.9;
+}
+#ship_select label > div > div > div, div.shipdisplay > div > div {
+background: #390;
+height: 100%;
+left: 0;
+position: absolute;
+top: 0;
+z-index: 5;
+}
+#ship_select label > div > div > p, div.shipdisplay > div > p {
+position: relative;
+z-index: 10;
+}
+#ship_select input[type="radio"] {
+position: absolute;
+top: -1000px;
+}
+#ship_select input[type="radio"]:focus + label {
+background: #333;
+}
+#ship_select input[type="radio"]:checked + label {
+background: #555;
+}
+#ship_select input[type="radio"]:checked + label > div {
+box-shadow: inset 0 0 16px #fff;
+}
+#ship_select input[type="radio"][disabled] + label > div {
+cursor: not-allowed;
+opacity: 0.5;
+}
+
+#outro, #help {
+height: 0;
+opacity: 0;
+}
+#outro > div > p > a, #help > div > p > a[href="./"] {
+border: #444 2px outset;
+background: #bbb;
+color: #111;
+display: inline-block;
+font-size: 100%;
+margin: 0 0.75em;
+padding: 0.3em 0.6em;
+text-align: center;
+text-decoration: none;
+width: 5em;
+}
+#outro table {
+text-align: left;
+width: 100%;
+}
+#outro table td:last-child {
+text-align: right;
+}
+#outro > div > p > a:focus, #outro > div > p > a:active {
+outline: 2px #bbb solid;
+}
+#intro > form > input:hover, #outro > div > p > a:hover {
+background: #eee;
+}
+#outro tr.last_game {
+background: #f30;
+color: #111;
+}
+#outro tr.last_game td {
+padding: 0.25em 0 0.3em;
+}
+#outro tr.last_game td:first-child, #outro tr.last_game td:last-child {
+padding: 0.25em 0.5em 0.3em;
+}
+
+#help_body table {
+border-collapse:separate;
+empty-cells: show;
+text-align: left;
+width: 100%;
+}
+#help_body table td {
+padding: 0.2em 0.5em 0.3em;
+}
+#help_body tr:nth-child(2n) td {
+background-color:#FF3300;
+}
+#help_body table td:nth-child(2n) {
+text-align: right;
+}
+#help_body > div > * {
+margin-bottom: 1.5em;
+}
+#help_body p {
+margin-bottom: 1.5em;
+text-align: left !important;
+}
+#help_body > p:last-child {
+text-align: center !important;
+}
+
+#paused {
+display: none;
+font-size: 300%;
+left: 50%;
+letter-spacing: 0.5em;
+line-height: 2em;
+margin-left: -5em;
+margin-top: -1em;
+position: absolute;
+text-align: center;
+top: 50%;
+width: 10em;
+}
+
+#main_info {
+right: 0;
+top: 0;
+}
+
+#other_info {
+left: 0;
+top: 0;
+}
+#controls {
+bottom: 0;
+}
+#controls td span {
+display: block;
+float: left;
+}
+#controls .up {
+height: 1em;
+width: 1em;
+-ie-transform: rotate(270deg);
+-moz-transform: rotate(270deg);
+-webkit-transform: rotate(270deg);
+transform: rotate(270deg);
+}
+#controls .down {
+height: 1em;
+width: 1em;
+-ie-transform: rotate(90deg);
+-moz-transform: rotate(90deg);
+-webkit-transform: rotate(90deg);
+transform: rotate(90deg);
+}
+#controls .left, #controls .spinleft {
+height: 1em;
+width: 1em;
+-ie-transform: rotate(180deg);
+-moz-transform: rotate(180deg);
+-webkit-transform: rotate(180deg);
+transform: rotate(180deg);
+}
+#controls .right, #controls .spinright {
+height: 1em;
+width: 1em;
+}
+#controls .spinleft, #controls .spinright, #paused {
+-ie-animation-duration: 3s;
+-ie-animation-iteration-count: infinite;
+-ie-animation-timing-function: linear;
+-moz-animation-duration: 3s;
+-moz-animation-iteration-count: infinite;
+-moz-animation-timing-function: linear;
+-webkit-animation-duration: 3s;
+-webkit-animation-iteration-count: infinite;
+-webkit-animation-timing-function: linear;
+animation-duration: 3s;
+animation-iteration-count: infinite;
+animation-timing-function: linear;
+}
+#controls .spinleft {
+-ie-animation-name: spinleft;
+-moz-animation-name: spinleft;
+-webkit-animation-name: spinleft;
+animation-name: spinleft;
+}
+#controls .spinright {
+-ie-animation-name: spinright;
+-moz-animation-name: spinright;
+-webkit-animation-name: spinright;
+animation-name: spinright;
+}
+#paused {
+-ie-animation-name: paused;
+-moz-animation-name: paused;
+-webkit-animation-name: paused;
+animation-name: paused;
+}
+
+/* --------------------------------------------- animation keyframes: --------------------------------------------- */
+
+@-ie-keyframes spinleft {
+	from {
+		-ie-transform: rotate(180deg);
+	}
+	to {
+		-ie-transform: rotate(-180deg);
+	}
+}
+@-moz-keyframes spinleft {
+	from {
+		-moz-transform: rotate(180deg);
+	}
+	to {
+		-moz-transform: rotate(-180deg);
+	}
+}
+@-webkit-keyframes spinleft {
+	from {
+		-webkit-transform: rotate(180deg);
+	}
+	to {
+		-webkit-transform: rotate(-180deg);
+	}
+}
+keyframes spinleft {
+	from {
+		transform: rotate(180deg);
+	}
+	to {
+		transform: rotate(-180deg);
+	}
+}
+@-ie-keyframes spinright {
+	from {
+		-ie-transform: rotate(0deg);
+	}
+	to {
+		-ie-transform: rotate(360deg);
+	}
+}
+@-moz-keyframes spinright {
+	from {
+		-moz-transform: rotate(0deg);
+	}
+	to {
+		-moz-transform: rotate(360deg);
+	}
+}
+@-webkit-keyframes spinright {
+	from {
+		-webkit-transform: rotate(0deg);
+	}
+	to {
+		-webkit-transform: rotate(360deg);
+	}
+}
+keyframes spinright {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+
+@-ie-keyframes paused {
+	from {
+		opacity: 0.5;
+	}
+	50% {
+		opacity: 1;
+	}
+	to {
+		opacity: 0.5;
+	}
+}
+@-moz-keyframes paused {
+	from {
+		opacity: 0.5;
+	}
+	50% {
+		opacity: 1;
+	}
+	to {
+		opacity: 0.5;
+	}
+}
+@-webkit-keyframes paused {
+	from {
+		opacity: 0.5;
+	}
+	50% {
+		opacity: 1;
+	}
+	to {
+		opacity: 0.5;
+	}
+}
+keyframes paused {
+	from {
+		opacity: 0.5;
+	}
+	50% {
+		opacity: 1;
+	}
+	to {
+		opacity: 0.5;
+	}
+}

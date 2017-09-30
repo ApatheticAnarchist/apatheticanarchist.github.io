@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>JAVASCROIDS</title>
+
+<link rel="icon" type="text/css" href="favicon.ico" />
+<link rel="stylesheet" type="text/css" href="css/reset-min.css" />
+<link rel="stylesheet" type="text/css" href="css/game.css" />
+
+<script src="js/game.js"></script>
+<script src="js/gameobjects1.js"></script>
+<script src="js/gameobjects2.js"></script>
+<script src="js/gameobjects3.js"></script>
+<script src="js/gameDOM.js"></script>
+<script src="js/gameinit.js"></script>
+
+</head>
+<body>
+<div id="intro">
+	<form id="intro_form">
+		<h1><img src="img/icon.png" alt="">JAVASCROIDS<img src="img/icon_flipped.png" alt=""></h1>
+		<p>Choose Ship:</p>
+		<fieldset><div id="ship_select"></div></fieldset>
+		<label>Your Name:
+			<br/>
+			<br/>
+			<input type="text" id="player_name" placeholder="PLAYER 1" />
+		</label>
+		<a id="hi-score-link" href="./">High Scores</a>
+		<a id="help-link" href="./">Help</a>
+		<input type="submit" id="go_btn" value="START" />
+	</form>
+</div>
+<div id="help">
+	<div id="help_body">
+		<h1><img src="img/icon.png" alt="">JAVASCROIDS<img src="img/icon_flipped.png" alt=""></h1>
+		<div>
+			<table>
+				<colgroup span="2" id="movement" style="border: 2px inset #444;"></colgroup>
+				<colgroup span="2" id="other"></colgroup>
+				<tr>
+					<td>Thrust Forwards:</td><td>W</td>
+					<td>Fire Guns:</td><td>[space]</td>
+				</tr>
+				<tr>
+					<td>Thrust Backwards:</td><td>S</td>
+					<td>Use Special:</td><td>[shift]</td>
+				</tr>
+				<tr>
+					<td>Spin Left:</td><td>A</td>
+					<td/><td/>
+				</tr>
+				<tr>
+					<td>Thrust Left:</td><td>Q</td>
+					<td>Pause:</td><td>P</td>
+				</tr>
+				<tr>
+					<td>Spin Right:</td><td>D</td>
+					<td>Show Menu:</td><td>H</td>
+				</tr>
+				<tr>
+					<td>Thrust Right:</td><td>E</td>
+					<td/><td/>
+				</tr>
+			</table>
+			<p>When flying your ship keep in mind that, because it's in space, it will continue to move / spin
+				even after you stop thrusting. A light touch is the key!</p>
+		</div>
+		<p><a id="help-back" href="./" autofocus="true">Back</a></p>
+	</div>
+</div>
+<div id="outro">
+	<div>
+		<h1 id="main-score">Your Score: <span id="player_score">0</span></h1>
+		<h2>High Scores</h2>
+		<table id="hi-scores"></table>
+		<p>
+			<a href="./" id="resume_btn" >Resume</a>
+			<a href="./" id="retry_btn" >Retry</a>
+			<a href="./" id="menu_btn" >Menu</a>
+			<a href="./" id="clear_data_btn" >Clear Data</a>
+		</p>
+	</div>
+</div>
+<div id="paused">[Paused]</div>
+<table id="main_info">
+	<tr>
+		<td><span id="player_name_out">PLAYER 1</span></td>
+		<td>Hull : <span id="health">0</span></td>
+		<td>Level : <span id="level">0</span></td>
+		<td>Score : <span id="score">0</span></td>
+	</tr>
+</table>
+<!--
+<table id="controls">
+	<tr>
+		<td><span class="left">&#10140;</span>&nbsp;: Q</td>
+		<td><span class="up">&#10140;</span>&nbsp;: W</td>
+		<td><span class="right">&#10140;</span>&nbsp;: E</td>
+		<td></td>
+		<td><span>shoot</span>&nbsp;: [space]</td>
+		<td><span>special</span>&nbsp;: [shift]</td>
+	</tr>
+	<tr>
+		<td><span class="spinleft">&#10140;</span>&nbsp;: A</td>
+		<td><span class="down">&#10140;</span>&nbsp;: S</td>
+		<td><span class="spinright">&#10140;</span>&nbsp;: D</td>
+		<td></td>
+		<td><span>pause</span>&nbsp;: P</td>
+		<td><span>menu</span>&nbsp;: H</td>
+	</tr>
+</table>-->
+<img src="img/shipsprite.png" alt="" id="shipsprite" style="display:none" />
+<img src="img/asteroid_texture.png" alt="" id="asteroidsprite" style="display:none" />
+<img src="img/junk_texture.png" alt="" id="junksprite" style="display:none" />
+</body>
+</html>
