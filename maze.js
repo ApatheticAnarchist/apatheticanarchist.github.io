@@ -2,7 +2,7 @@
 	
 	'use strict';
 	
-	const	SQUARESIZE	= 12,
+	const	SQUARESIZE	= 16,
 			
 			//
 			//	bitmask flags
@@ -94,7 +94,7 @@
 		}
 		
 		
-		startPoint	= 3 + width;// Math.floor( ( ( height / 2 ) + 0.5 ) * width );
+		startPoint	= 4 + width + width;// Math.floor( ( ( height / 2 ) + 0.5 ) * width );
 		
 		//
 		//	mark the startpoint as VISITED
