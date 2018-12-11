@@ -170,7 +170,7 @@
 	
 	
 	function recurse( path, pathStr, width, squares, incomplete, current, word ) {
-		console.log( current, word );
+		
 		let	currentSq	= squares[ current ],
 			
 			neighbours,
