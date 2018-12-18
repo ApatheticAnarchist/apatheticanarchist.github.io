@@ -1,0 +1,56 @@
+<svg
+	version		= "1.1"
+	xmlns		= "http://www.w3.org/2000/svg"
+	xmlns:xlink	= "http://www.w3.org/1999/xlink"
+	viewbox		= "0 0 64 64"
+	style		= "height:0;width:0;position:absolute;top:-100%;"
+>
+	<defs>
+		<symbol
+			id		= "icon-about"
+		>
+			<path
+				d	= "
+					M32,0
+					L32,6
+					A24,24 0 0 0 32,58
+					A24,24 0 0 0 32,6
+					
+					M24,24
+					A8,8 0 1 1 32,32
+					L32,40
+					M32,44
+					L32,48
+				"
+			/>
+		</symbol>
+		<symbol
+			id		= "icon-game"
+		>
+			<path
+				d	= "
+					M32,0
+					L32,6
+					A24,24 0 0 0 32,58
+					A24,24 0 0 0 32,6
+					
+					M32,12
+					A8,24 0 0 1 40,36
+					A4,8 0 0 1 44,46
+					L38,46
+					A6,6 0 0 0 26,46
+					L20,46
+					A4,8 0 0 1 24,36
+					A8,24 0 0 1 32,12
+					Z
+					
+					M32,22
+					L32,26
+					
+					M32,30
+					L32,34
+				"
+			/>
+		</symbol>
+	</defs>
+</svg>

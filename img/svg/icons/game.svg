@@ -1,0 +1,38 @@
+<svg
+	version	= "1.1"
+	xmlns		= "http://www.w3.org/2000/svg"
+	xmlns:xlink	= "http://www.w3.org/1999/xlink"
+	viewbox		= "0 0 64 64"
+>
+	<g
+		id		= "icon-game"
+		fill	= "none"
+		stroke	= "black"
+		stroke-width	= "4"
+	>
+		<path
+			d	= "
+				M32,0
+				L32,6
+				A24,24 0 0 0 32,58
+				A24,24 0 0 0 32,6
+				
+				M32,12
+				A8,24 0 0 1 40,36
+				A4,8 0 0 1 44,46
+				L38,46
+				A6,6 0 0 0 26,46
+				L20,46
+				A4,8 0 0 1 24,36
+				A8,24 0 0 1 32,12
+				Z
+				
+				M32,22
+				L32,26
+				
+				M32,30
+				L32,34
+			"
+		/>
+	</g>
+</svg>
