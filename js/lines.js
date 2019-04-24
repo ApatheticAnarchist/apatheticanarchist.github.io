@@ -128,7 +128,7 @@
 		//
 		if ( ! canvas ) {
 			
-			canvas	= sizeCanvas( null, dims);
+			canvas	= sizeCanvas( null, dims );
 			
 		}
 		

@@ -25,7 +25,7 @@
 		const	dims	= evt.detail.dims,
 				canvas	= evt.target,
 				wheel	= window.wheel.initialise( canvas, dims );
-		
+		window.goDragon( [ dims.centreX, dims.centreY ] );
 	}
 	
 })( window );
