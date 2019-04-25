@@ -1,10 +1,17 @@
 'use strict';
 
-const	parts	= {
-					'X'	: [ 'X', '+', 'Y', 1 ],
-					'Y'	: [ 1, 'X', '-', 'Y' ]
-				},
-		start	= [ 1, 'X' ];
+const	parts		= {
+						'X'	: [ 'X', '+', 'Y', 1 ],
+						'Y'	: [ 1, 'X', '-', 'Y' ]
+					},
+		startPart	= [ 1, 'X' ],
+		
+		angles	= [
+					[ 1, 0 ],
+					[ 0, -1 ],
+					[ -1, 0 ],
+					[ 0, 1 ]
+				];
 
 
 /*
@@ -26,13 +33,15 @@ function onMessage( res ) {
 	postMessage(
 		pathifyOutput(
 			recurse(
-				start,
+				startPart,
 				0,
 				maxRecurse
 			).filter(
 				cleanOutput_filter
 			),
-			res && res.data && res.data.center || [ 100, 100 ]
+			res && res.data && res.data.center || [ 0, 0 ],
+			res && res.data && res.data.rotation || 0,
+			res && res.data && res.data.lineLength || 1
 		)
 	);
 	
@@ -95,11 +104,11 @@ function cleanOutput_filter( item ) {
 
 
 
-function pathifyOutput( input, start ) {
+function pathifyOutput( input, startPoint, rotation, lineLength ) {
 	
-	let	current	= start.slice(),
+	let	current	= startPoint.slice(),
 		output	= [],
-		dir		= [ -4, 0 ];
+		dir		= angles[ rotation ].slice();
 	
 	input.forEach(
 		function( item ) {
@@ -110,8 +119,8 @@ function pathifyOutput( input, start ) {
 			if ( item === 1 ) {
 				
 				
-				let	x	= current[ 0 ] + dx,
-					y	= current[ 1 ] + dy;
+				let	x	= current[ 0 ] + ( dx * lineLength ),
+					y	= current[ 1 ] + ( dy * lineLength );
 				
 				current	= [ x, y ];
 				

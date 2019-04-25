@@ -63,7 +63,7 @@
 		
 		canvas.appendChild( wrap );
 		
-		loadingAnimation( wrap, windowDimensions, 250 );
+		//loadingAnimation( wrap, windowDimensions, 250 );
 		
 		return	canvas;
 		
