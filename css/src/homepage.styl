@@ -1,4 +1,5 @@
-$color-blue	= #0efd
+$color-blue	= #0efd;
+$color-pink	= #f48d;
 
 *
 	margin	0
@@ -35,6 +36,23 @@ svg
 	outline	none
 
 
+// colours passed to gradient(s) etc.
+.grad-blue
+	stop-color	$color-blue
+
+.grad-pink
+	stop-color	$color-pink
+
+
+
+.dragon path
+	stroke		url(#blue-pink)
+	transition	stroke-dashoffset 15s linear
+
+.dragon.show path
+	stroke-dashoffset	0
+
+
 
 .wheel-canvas
 	fill			none
@@ -44,7 +62,6 @@ svg
 	stroke-linejoin	round
 	
 	filter	url(#smallglow)
-	
 
 
 .wheel-node

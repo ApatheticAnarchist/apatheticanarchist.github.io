@@ -1,0 +1,9 @@
+{
+  "name": "apatheticanarchist.github.io",
+  "version": "0.0.0",
+  "devDependencies": {
+    "gulp": "^4.0.1",
+    "gulp-stylus": "^2.7.0",
+    "stylus": "^0.54.5"
+  }
+}

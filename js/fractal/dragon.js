@@ -28,17 +28,17 @@
 			path	= document.createElementNS( window.svg.SVG_NS, 'path' );
 		
 		path.setAttribute( 'd', pathStr );
-		path.setAttribute( 'stroke-width', 1 );
+		path.setAttribute( 'stroke-width', 2 );
 		path.setAttribute( 'stroke-dasharray', path.getTotalLength() );
-		path.setAttribute( 'stroke-dashoffset', path.getTotalLength() );
+		path.setAttribute( 'stroke-dashoffset', -1 * path.getTotalLength() );
 		
-		g.setAttribute( 'class', 'wheel-node' );
+		g.setAttribute( 'class', 'dragon' );
 		
 		g.appendChild( path );
 		document.querySelector( '.wheel-canvas' ).appendChild( g );
 		
 		setTimeout(function(){
-			g.setAttribute( 'class', 'wheel-node show' );
+			g.setAttribute( 'class', 'dragon show' );
 		},200);
 		
 	};
