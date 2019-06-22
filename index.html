@@ -17,6 +17,8 @@
 			rel		= "stylesheet"
 		>-->
 		
+		<link href="https://fonts.googleapis.com/css?family=Racing+Sans+One&display=swap" rel="stylesheet">
+		
 		<link
 			href	= "/css/build/homepage.css"
 			rel		= "stylesheet"
@@ -24,6 +26,7 @@
 		
 	</head>
 	<body>
+		<!-- filters: TODO separate out -->
 		<svg
 			version		= "1.1"
 			xmlns		= "http://www.w3.org/2000/svg"
@@ -66,11 +69,82 @@
 						offset	= "100%"
 					/>
 				</linearGradient>
+				
+				<filter
+					id	= "growForegroundOutlines"
+					x		= "-30%"
+					y		= "-30%"
+					width	= "160%"
+					height	= "160%"
+				>
+					<!-- get the expanded outline of the shape -->
+					<feMorphology
+						in			= "SourceGraphic"
+						operator	= "dilate"
+						radius		= "4"
+						result		= "dilated"
+					/>
+					
+					<!-- add noise -->
+					<!--<feTurbulence type="turbulence" baseFrequency="0.05"
+						numOctaves="2" result="turbulence"/>
+					<feDisplacementMap in2="turbulence" in="dilated" result="noised"
+						scale="8" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>-->
+					
+					<feGaussianBlur
+						in				= "dilated"
+						stdDeviation	= "4 4"
+						result			= "noised"
+					/>
+					
+					<!-- remove the alpha, make it black -->
+					<feComponentTransfer
+						in		= "noised"
+						result	= "blackened"
+					>
+						<feFuncR
+							type		= "linear"
+							slope		= "-1"
+							intercept	= "0"
+						/>
+						<feFuncG
+							type		= "linear"
+							slope		= "-1"
+							intercept	= "0"
+						/>
+						<feFuncB
+							type		= "linear"
+							slope		= "-1"
+							intercept	= "0"
+						/>
+						<feFuncA
+							type		= "linear"
+							slope		= "10"
+							intercept	= "0"
+						/>
+					</feComponentTransfer>
+					
+				</filter>
+				<filter id="noise" x="0%" y="0%" width="100%" height="100%">
+					<feTurbulence baseFrequency="0.01 0.4" result="NOISE" numOctaves="2" />
+					<feDisplacementMap in="SourceGraphic" in2="NOISE" scale="20" xChannelSelector="R" yChannelSelector="R"></feDisplacementMap>
+				</filter>
+				<mask
+					id		= "foregroundOutlines"
+					class	= "foreground-outlines"
+				>
+					<rect
+						x		= "0"
+						y		= "0"
+						width	= "10000"
+						height	= "10000"
+						fill	= "white"
+					/>
+				</mask>
 			</defs>
 		</svg>
 		
-		
-		<ul
+		<!--<ul
 			id	= "contents"
 		>
 			<li
@@ -88,31 +162,7 @@
 					witty subject line :D
 				</p>
 			</li>
-			<li
-				id			= "content"
-				data-title	= "code"
-			></li>
-			<!--<li
-				id			= "game"
-				data-title	= "game"
-			>
-				<p>
-					Several years ago (I won't say how many) I made a game.
-					It took bloody ages! I'm very proud of it though, it's
-					still one of the best things I've ever built. It features
-					pixel-perfect collision detection, a local scoreboard and
-					hand drawn art. Sure the gameplay is a rip-off of Asteroids
-					but it was always intended as a technical exercise rather
-					than a revolution in game design.
-				</p>
-				
-				<p>
-					<a
-						href	= "/javascroids/"
-					>Check it out and see if you can unlock all of the ships!</a>
-				</p>
-			</li>-->
-		</ul>
+		</ul>-->
 		
 		<script
 			src	= "/js/homepage/svg.js"
@@ -128,17 +178,9 @@
 			src	= "/js/fractal/dragon.js"
 		></script>
 		
-		<!--
-		<div
-			class	= "expando"
-		>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nec nisi placerat, porta quam vel,
-			suscipit justo. In vitae lacinia sapien, eget euismod nisl. Aenean pretium sapien vitae lectus
-			dignissim, eget posuere magna ornare. Integer tempus lacinia tincidunt. Phasellus posuere lacus
-			nec magna venenatis dignissim. Maecenas eleifend risus ac dui elementum vestibulum. Duis sit amet
-			lorem turpis. Etiam luctus rhoncus tellus, eu maximus ante imperdiet id. Sed scelerisque aliquam
-			massa quis ornare.
-		</div>
-		-->
+		<script
+			src	= "/js/grid/generate.js"
+		></script>
+		
 	</body>
 </html>

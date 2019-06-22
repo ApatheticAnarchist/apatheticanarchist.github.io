@@ -30,26 +30,29 @@ function onMessage( res ) {
 		
 	}
 	
-	postMessage(
-		pathifyOutput(
-			recurse(
-				startPart,
-				0,
-				maxRecurse
-			).filter(
-				cleanOutput_filter
-			),
-			res && res.data && res.data.center || [ 0, 0 ],
-			res && res.data && res.data.rotation || 0,
-			res && res.data && res.data.lineLength || 1
-		)
-	);
+	let	points	= pathifyOutput(
+					recurse(
+						startPart,
+						0,
+						maxRecurse
+					).filter(
+						cleanOutput_filter
+					),
+					res && res.data && res.data.center || [ 0, 0 ],
+					res && res.data && res.data.rotation || 0,
+					res && res.data && res.data.lineLength || 1
+				);
+	//console.log( points );
+	postMessage( { points } );
 	
 }
 onmessage	= onMessage;
 
 
 
+/*
+ * run the l-system to generate the points
+ */
 function recurse( input, count, maxCount ) {
 	
 	let	output	= iterate( input );
@@ -67,6 +70,10 @@ function recurse( input, count, maxCount ) {
 }
 
 
+/*
+ * run a single iteration of the l-system (called
+ * recursively by `recurse`)
+ */
 function iterate( input ) {
 	
 	let	output	= input.slice();
@@ -103,7 +110,12 @@ function cleanOutput_filter( item ) {
 }
 
 
-
+/*
+ * converts the l-system +/-/1 into cartesian points 
+ * 
+ * TODO	absolute/relative
+ * TODO	consolidate colinear points (if not animating)
+ */
 function pathifyOutput( input, startPoint, rotation, lineLength ) {
 	
 	let	current	= startPoint.slice(),
