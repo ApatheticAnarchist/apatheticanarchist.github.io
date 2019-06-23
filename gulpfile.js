@@ -34,7 +34,7 @@ gulp.task(
 	'watch',
 	function() {
 		
-		log( '\x1b[45m\x1b[1m%s\x1b[0m', ' ctrl-z to stop ' );
+		log( '\x1b[41m\x1b[1m%s\x1b[0m', ' ctrl-c to stop ' );
 		
 		return	gulp.watch(
 			'css/src/*.styl',
