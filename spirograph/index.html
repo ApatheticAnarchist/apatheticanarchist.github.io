@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+	<head>
+		<style>
+			body {
+				background	: #080808;
+			}
+			circle {
+				fill	: none;
+				stroke	: black;
+			}
+			path {
+				color	: white;
+				
+				fill			: currentColor;
+				stroke			: currentColor;
+				stroke-width	: 2;
+				
+				fill-opacity	: 0.25;
+				//stroke-opacity	: 0.25;
+				
+				transition	: stroke-dashoffset 5s linear;
+			}
+		</style>
+	</head>
+	<body>
+		<svg
+			version		= "1.1"
+			xmlns		= "http://www.w3.org/2000/svg"
+			style		= "height:0;width:0;position:absolute;top:-100%;"
+		>
+			<defs>
+				<radialGradient
+					id	= "rainbow"
+				>
+					<stop
+						stop-color	= "#f00"
+						offset		= "0%"
+					/>
+					<stop
+						stop-color	= "#ff0"
+						offset		= "16.7%"
+					/>
+					<stop
+						stop-color	= "#0f0"
+						offset		= "33.3%"
+					/>
+					<stop
+						stop-color	= "#0ff"
+						offset		= "50%"
+					/>
+					<stop
+						stop-color	= "#00f"
+						offset		= "66.7%"
+					/>
+					<stop
+						stop-color	= "#f0f"
+						offset		= "83.3%"
+					/>
+					<stop
+						stop-color	= "#f00"
+						offset		= "100%"
+					/>
+				</radialGradient>
+			</defs>
+		</svg>
+		<script src="geom.js"></script>
+		<script src="main.js"></script>
+	</body>
+</html>
