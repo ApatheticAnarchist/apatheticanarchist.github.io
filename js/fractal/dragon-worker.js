@@ -57,6 +57,8 @@ function recurse( input, count, maxCount ) {
 	
 	let	output	= iterate( input );
 	
+	//postMessage( { points: output, i: count } );
+	
 	if ( ++count < maxCount ) {
 		
 		return	recurse( output, count, maxCount );

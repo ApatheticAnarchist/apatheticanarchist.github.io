@@ -28,50 +28,67 @@
 				dragon	= getDragon( 13, { rotation : 1 } ),
 				grid	= generateHexGrid( 16, dims.width,  dims.height );	// TODO workerise
 		
+		canvas.setAttribute( 'class', 'svgcanvas' );
+		
 		dragon.then(
 			function( { points, center } ) {
 				
-				let	drawPath	= Dragon.svgPath(
+				let	dragonPath	= Dragon.svgPath(
 									points,
 									center,
 									canvas,
 									dims
 								),
-					maskPath	= Dragon.svgPath(
-									Dragon.simplify( points ),	// TODO workerise
-									center,
-									canvas,
-									dims
-								),
+					dragonId	= 'dragon-' + Math.floor( Math.random() * 1000000 ).toString( 36 ),
 					
-					hexPath		= drawHexGrid( canvas, grid ),
+					use 		= document.createElementNS( window.svg.SVG_NS, 'use' ),
+					use2, maskUse,	// gonna clone `use` for these
 					
-					mask		= document.getElementById( 'foregroundOutlines' ),
+					hexGrid		= getHexSVG( dims.height, 16 ),
+					hexId		= 'hex-' + Math.floor( Math.random() * 1000000 ).toString( 36 ),
+					hexBox		= getHexRect( hexId, dims ),
+					
+					defs		= document.querySelector( 'defs' ),	// TODO	generate
+					mask		= document.getElementById( 'foregroundOutlines' ),	// TODO generate
 					
 					txt			= document.createElementNS( window.svg.SVG_NS, 'text' );
 				
-				txt.textContent	= 'Demo Title';
-				txt.setAttribute( 'font-size', 64 );
-				txt.setAttribute( 'font-family', 'Hybrid, NamskoutIn, Matematica, PP Handwriting, Metal on Metal, NamskoutIn' );
-				txt.setAttribute( 'stroke', 'url(#blue-pink)' );
-				txt.setAttribute( 'stroke-width', 3 );
-				txt.setAttribute( 'fill', 'url(#blue-pink)' );
-				txt.setAttribute( 'fill-opacity', 0.25 );
-				txt.setAttribute( 'filter', 'url(#smallglow) drop-shadow( 0 0 5px black )' );
-				txt.setAttribute( 'x', '100' );
-				txt.setAttribute( 'y', '90%' );
+				hexGrid.id	= hexId;
+				
+				defs.appendChild( hexGrid );
+				
+				canvas.appendChild( hexBox );
 				
 				
-				canvas.appendChild( txt );
+				dragonPath.id	= dragonId;
 				
-				mask.appendChild( maskPath );
+				defs.insertBefore( dragonPath, mask );
+				
+				
+				use.setAttribute( 'class', 'dragon' );
+				use.setAttributeNS( window.svg.XLINK_NS, 'href', '#' + dragonId );
+				
+				canvas.appendChild( use );
+				
+				
+				use2	= use.cloneNode( true );
+				
+				use2.setAttribute( 'class', 'dragon wiggly' );
+				
+				canvas.appendChild( use2 );
+				
+				
+				maskUse	= use.cloneNode( true );
+				
+				mask.appendChild( maskUse );
+				
 				
 				setTimeout( () => {
 					
-					//document.querySelector( '.JS_content' ).classList.add( 'show' );
-					drawPath.setAttribute( 'class', 'dragon show' );
-					maskPath.setAttribute( 'class', 'dragon show' );
-					hexPath.setAttribute( 'class', 'hexgrid show' );
+					document.querySelector( '.JS_content' ).classList.add( 'show' );
+					use.setAttribute( 'class', 'dragon show' );
+					use2.setAttribute( 'class', 'dragon wiggly show' );
+					hexBox.setAttribute( 'class', 'hexbox show' );
 					
 				}, 250 );
 				

@@ -11,9 +11,10 @@ $dim-spacing-xs	= $dim-spacing-s * 0.75
 $dim-spacing-l	= $dim-spacing * 1.33
 $dim-spacing-xl	= $dim-spacing-l * 1.33
 
-$font-family-display	= Namskout, PP Handwriting, 'Metal on Metal', sans-serif;
+$font-family-display	= NamskoutIn, PP Handwriting, 'Metal on Metal', sans-serif;
 $font-family-body		= sans-serif;
 
+@import	'../fonts/nameskin-all.css';
 
 $time-fade-default	= 1s
 $time-fade-dragon	= $time-fade-default
@@ -85,11 +86,34 @@ svg
 // apply filter & required colours to foreground outlines mask
 .foreground-outlines
 	.dragon
-		opacity	1//fadeIn( 1 )//can't get it to fade all the way in >:(
-		filter	url(#growForegroundOutlines)
-		path
-			stroke	black
+		opacity			1
+		fill			none
+		//filter			url(#growForegroundOutlines)
+		overflow		visible
+		stroke			black
+		stroke-linejoin	round
+		stroke-width	16
 
+$dim-hex	= 16 * 7;
+
+.hexgrid
+	fill			transparent
+	//filter			url(#smallglow)
+	stroke			url(#blue-pink)
+	stroke-width	2
+	/*
+	animation			hex 10s linear infinite
+	stroke-dasharray	$dim-hex $dim-hex
+	*/
+
+@keyframes hex {
+	from {
+		stroke-dashoffset	0
+	}
+	to {
+		stroke-dashoffset	$dim-hex * 2
+	}
+}
 
 
 
@@ -101,26 +125,21 @@ svg
 	bottom		0
 	left		0
 	position	absolute
+	right		0
 	z-index		10
 	
 	padding		$dim-spacing-xl
 	
 	color	$color-blue//url(#blue-pink)
 	
-	text-align	center
+	//text-align	center
 	
 	h1, h2, h3, h4, h5, h6
 		color		$color-pink
 		font-family	$font-family-display
+		height		1.5em
+		line-height	1.5
 		position	relative
-		&::before
-			color		$color-pink
-			content		attr( data-content )
-			font-family NamskoutIn
-			position	absolute
-			right		0
-			top			0
-			z-index		-1
 	
 	h1
 		font-size	$dim-spacing-xl
@@ -131,37 +150,59 @@ svg
 	h1 + h2
 		margin-top	$dim-spacing-l * 0.5
 		padding-top	$dim-spacing-xl * 0.5
+	
+	svg
+		display	inline-block
+		height	100%
+		width	100%
+		text
+			fill			url(#blue-pink)
+			fill-opacity	0.25
+			stroke			url(#blue-pink)
+			stroke-width	2
+			text-anchor		middle
+			transform		translateY( 70% )
 
-
-.dragon
-	fadeIn()
-	path
-		fill			none
-		filter			url(#smallglow)
-		stroke			url(#blue-pink)
-		stroke-width	2
+@media ( orientation : portrait )
+	.content
+		h1
+			font-size	$dim-spacing
 		
-		//animation			tinydragons 10s
-		//stroke-dasharray	90 9000
+
+
+
+$dim-wiggle	= 8 * 16;
+
+.svgcanvas
+	fill	red
+	.dragon
+		fadeIn()
+		fill			none
+		//filter			url(#smallglow)
+		stroke			url(#blue-pink)
+		stroke-opacity	0.3
+		stroke-width	2
+		&.wiggly
+			filter				none
+			
+			animation			tinydragons 10s linear infinite
+			//							1			27				28			42				43			75
+			stroke-dasharray	$dim-wiggle $dim-wiggle * 26  $dim-wiggle $dim-wiggle * 14  $dim-wiggle $dim-wiggle * 32
+			stroke-width		1
+			stroke-opacity		1
+	.hexbox
+		fadeIn( 0.33 )
+		// fill set to hexgrid pattern in JS
+		mask				url(#foregroundOutlines)
 
 @keyframes tinydragons {
 	from {
 		stroke-dashoffset	0
 	}
 	to {
-		stroke-dashoffset	9090
+		stroke-dashoffset	$dim-wiggle * 75
 	}
 }
-
-
-.hexgrid
-	fadeIn( 0.33 )
-	.default
-		fill			transparent
-		//filter			url(#smallglow)
-		mask			url(#foregroundOutlines)
-		stroke			url(#blue-pink)//alpha( $color-blue, 25% )
-		stroke-width	2
 
 
 

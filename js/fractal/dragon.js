@@ -75,12 +75,7 @@
 		
 		path.setAttribute( 'd', getPathString( points, center, lineLength ) );
 		
-		g.setAttribute( 'class', 'dragon' );
-		
-		g.appendChild( path );
-		canvas.appendChild( g );
-		
-		return	g;
+		return	path;
 		
 	}
 	

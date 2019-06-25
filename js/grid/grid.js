@@ -1,5 +1,89 @@
 'use strict';
 
+function getHexSVG(
+	height	= 450,	// have to match the height for gradient to work
+	r		= 10
+) {
+	
+	const	patrn	= document.createElementNS( window.svg.SVG_NS, 'pattern' ),
+			path	= document.createElementNS( window.svg.SVG_NS, 'path' ),
+			
+			cos30	= Math.cos( Math.PI / 6 ),
+			sin30	= Math.sin( Math.PI / 6 ),
+			
+			rcos30	= r * cos30,
+			rsin30	= r * sin30,
+			
+			x0		= 0,
+			x1		= x0 + rcos30,
+			x2		= x0 + ( 2 * rcos30 ),
+			
+			tileHeight	= ( 2 * r ) + ( 2 * rsin30 ),
+			yCount		= Math.ceil( height / tileHeight );
+	
+	patrn.setAttribute( 'class', 'hexgrid' );
+	patrn.setAttribute( 'patternUnits', 'userSpaceOnUse' );
+	patrn.setAttribute( 'x', 0 );
+	patrn.setAttribute( 'x', 0 );
+	patrn.setAttribute( 'width', x2 );
+	patrn.setAttribute( 'height', height );
+	
+	
+	let	yTop	= 0,
+		pathStr	= '';
+	
+	for ( let i = 0; i < yCount; i++ ) {
+		
+		let	y0	= yTop,
+			y1	= y0 + r,
+			y2	= y1 + rsin30,
+			y3	= y2 + r,
+			y4	= y3 + rsin30;
+		
+		pathStr	+= 'M' + x1 + ' ' + y0
+				+ 'L' + x1 + ' ' + y1
+				+ 'L' + x0 + ' ' + y2
+				+ 'L' + x0 + ' ' + y3
+				+ 'L' + x1 + ' ' + y4
+				+ 'L' + x2 + ' ' + y3
+				+ 'L' + x2 + ' ' + y2
+				+ 'L' + x1 + ' ' + y1
+				+ 'Z';
+		
+		yTop	+= tileHeight;
+		
+	}
+	
+	path.setAttribute( 'd', pathStr );
+	
+	patrn.appendChild( path );
+	
+	return	patrn;
+	
+}
+
+function getHexRect( id, { x = 0, y = 0, width = 800, height = 450 } ) {
+	
+	const	rect	= document.createElementNS( window.svg.SVG_NS, 'rect' );
+	
+	rect.setAttribute( 'class', 'hexbox' );
+	rect.setAttribute( 'fill', 'url(#' + id + ')' );
+	rect.setAttribute( 'x', x );
+	rect.setAttribute( 'y', y );
+	rect.setAttribute( 'width', width );
+	rect.setAttribute( 'height', height );
+	
+	return	rect;
+	
+}
+
+
+
+
+
+
+
+
 function drawHexGrid( canvas, grid, others ) {
 	
 	let	frag	= document.createDocumentFragment(),

@@ -71,59 +71,25 @@
 				</linearGradient>
 				
 				<filter
-					id	= "growForegroundOutlines"
-					x		= "-30%"
-					y		= "-30%"
-					width	= "160%"
-					height	= "160%"
+					id		= "growForegroundOutlines"
+					x		= "-50%"
+					y		= "-50%"
+					width	= "150%"
+					height	= "150%"
+					filterUnits	= "objectBoundingBox"
 				>
-					<!-- get the expanded outline of the shape -->
-					<feMorphology
-						in			= "SourceGraphic"
-						operator	= "dilate"
-						radius		= "4"
-						result		= "dilated"
-					/>
-					
-					<!-- add noise -->
-					<!--<feTurbulence type="turbulence" baseFrequency="0.05"
-						numOctaves="2" result="turbulence"/>
-					<feDisplacementMap in2="turbulence" in="dilated" result="noised"
-						scale="8" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>-->
-					
 					<feGaussianBlur
-						in				= "dilated"
 						stdDeviation	= "4 4"
-						result			= "noised"
+						result			= "glow"
 					/>
-					
-					<!-- remove the alpha, make it black -->
-					<feComponentTransfer
-						in		= "noised"
-						result	= "blackened"
-					>
-						<feFuncR
-							type		= "linear"
-							slope		= "-1"
-							intercept	= "0"
+					<!--<feMerge>
+						<feMergeNode
+							in	= "SourceGraphic"
 						/>
-						<feFuncG
-							type		= "linear"
-							slope		= "-1"
-							intercept	= "0"
+						<feMergeNode
+							in	= "glow"
 						/>
-						<feFuncB
-							type		= "linear"
-							slope		= "-1"
-							intercept	= "0"
-						/>
-						<feFuncA
-							type		= "linear"
-							slope		= "10"
-							intercept	= "0"
-						/>
-					</feComponentTransfer>
-					
+					</feMerge>-->
 				</filter>
 				<filter id="noise" x="0%" y="0%" width="100%" height="100%">
 					<feTurbulence baseFrequency="0.01 0.4" result="NOISE" numOctaves="2" />
@@ -134,8 +100,8 @@
 					class	= "foreground-outlines"
 				>
 					<rect
-						x		= "0"
-						y		= "0"
+						x		= "-10"
+						y		= "-10"
 						width	= "10000"
 						height	= "10000"
 						fill	= "white"
@@ -144,25 +110,15 @@
 			</defs>
 		</svg>
 		
-		<!--<ul
-			id	= "contents"
+		<div
+			class	= "content JS_content"
 		>
-			<li
-				id			= "about"
-				data-title	= "words"
-			>
-				<p>
-					This is a showcase site where I can show off my
-					<em>Mad Hacker Skills&trade;</em> by building
-					pointless graphical doodads. It's intentionally left
-					anonymous so I can use it to host stuff for
-					Reddit or whatever, so apologies for that. If you
-					simply <em>must</em> contact me then raise an issue
-					through the github repo. Bonus points for using a
-					witty subject line :D
-				</p>
-			</li>
-		</ul>-->
+			<h1><svg><text x="50%">Demo Title</text></svg></h1>
+		<!--
+			<h3><svg><text>This is a much smaller title</text></svg>This is a much smaller title</h3>
+			<h2><svg><text>This is a slightly larger title</text></svg>This is a slightly larger title</h2>
+		-->
+		</div>
 		
 		<script
 			src	= "/js/homepage/svg.js"
@@ -179,7 +135,7 @@
 		></script>
 		
 		<script
-			src	= "/js/grid/generate.js"
+			src	= "/js/grid/grid.js"
 		></script>
 		
 	</body>
