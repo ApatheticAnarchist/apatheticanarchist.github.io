@@ -2,18 +2,27 @@
 <html>
 	<head>
 		<style>
+			* {
+				margin	: 0;
+				padding	: 0;
+			}
 			body {
 				background	: #080808;
+			}
+			svg {
+				display		: block;
+				max-height	: 100vh;
+				max-width	: 100vw;
 			}
 			circle {
 				fill	: none;
 				stroke	: black;
 			}
-			path {
-				color	: white;
+			.spiro path {
+				color	: #505;
 				
-				fill			: currentColor;
-				stroke			: currentColor;
+				fill			: none;//currentColor;
+				stroke			: url(#rainbow2);//currentColor;
 				stroke-width	: 2;
 				
 				fill-opacity	: 0.25;
@@ -21,9 +30,16 @@
 				
 				transition	: stroke-dashoffset 5s linear;
 			}
+			
+			input {
+				left		: 0;
+				position	: absolute;
+				top			: 0
+			}
 		</style>
 	</head>
 	<body>
+		<input value="61,30,0.25"/>
 		<svg
 			version		= "1.1"
 			xmlns		= "http://www.w3.org/2000/svg"
@@ -31,7 +47,7 @@
 		>
 			<defs>
 				<radialGradient
-					id	= "rainbow"
+					id	= "rainbow1"
 				>
 					<stop
 						stop-color	= "#f00"
@@ -62,6 +78,42 @@
 						offset		= "100%"
 					/>
 				</radialGradient>
+				<linearGradient
+					id	= "rainbow2"
+					x1	= "0"
+					y1	= "0"
+					x2	= "100%"
+					y2	= "100%"
+				>
+					<stop
+						stop-color	= "#f00"
+						offset		= "0%"
+					/>
+					<stop
+						stop-color	= "#ff0"
+						offset		= "16.7%"
+					/>
+					<stop
+						stop-color	= "#0f0"
+						offset		= "33.3%"
+					/>
+					<stop
+						stop-color	= "#0ff"
+						offset		= "50%"
+					/>
+					<stop
+						stop-color	= "#00f"
+						offset		= "66.7%"
+					/>
+					<stop
+						stop-color	= "#f0f"
+						offset		= "83.3%"
+					/>
+					<stop
+						stop-color	= "#f00"
+						offset		= "100%"
+					/>
+				</linearGradient>
 			</defs>
 		</svg>
 		<script src="geom.js"></script>

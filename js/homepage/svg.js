@@ -96,6 +96,8 @@
 		
 	}
 	
+	window.svg.getWindowDimensions	= getWindowDimensions;
+	
 	
 	
 	function buildCanvas() {
@@ -132,6 +134,8 @@
 		return	canvas;
 		
 	}
+	
+	window.svg.sizeCanvas	= sizeCanvas;
 	
 	function appendCanvas( canvas, dims /* allow this to be passed thru to sizeCanvas() */ ) {
 		

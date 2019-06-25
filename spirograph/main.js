@@ -8,85 +8,125 @@
 		'DOMContentLoaded',
 		function() {
 			
-			const	w	= 600,
-					h	= 600,
+			const	w	= window.innerWidth,
+					h	= window.innerHeight,
 					
-					r	= 50,//Math.min( w, h ) * 0.45,
+					r	= Math.min( w, h ) * 0.25,
 					z	= 20;
 			
+			document.body.appendChild(
+				drawIt(
+					w, h, r,
+					[
+						//Math.PI / 3,
+						//Math.PI / 5,
+						//Math.PI
+					]
+				)
+			);
 			
-			const	svg	= document.createElementNS( SVG_NS, 'svg' );
-			
-			svg.setAttribute( 'width', w );
-			svg.setAttribute( 'height', h );
-			
-			
-			let	pts		= getPoints( 61, 30, 0.5 ),
-				trans	= get3d2dProjection(
-							rotate3DShape(
-								pts.reduce(
-									( arr, pt ) => {
-										
-										arr.push(
-											pt[ 0 ],
-											pt[ 1 ],
-											z,
-											pt[ 2 ],
-											pt[ 3 ],
-											z
-										);
-										
-										return	arr;
-										
-									},
-									[]
-								),
-								[
-									//Math.PI / 3,
-									//Math.PI / 5,
-									//Math.PI
-								],
-								[ 0, 0, z ]
-							)
-						).reduce(
-							( arr, pt, i ) => {
-								
-								if ( i % 2 ) {
-									
-									arr[ 0 ].push( pt[ 0 ], pt[ 1 ] );
-									
-								} else {
-									
-									arr.unshift( [ pt[ 0 ], pt[ 1 ] ] );
-									
-								}
-								
-								return	arr;
-								
-							},
-							[]
-						).reverse();
-			
-			
-			
-			let	p	= getPath(
-						{
-							points		: trans,
-							centerX		: w / 2,
-							centerY		: h / 2,
-							radius		: r,
-							curvature	: 1
-						}
+			document.querySelector( 'input' ).addEventListener(
+				'change',
+				() => {
+					
+					document.body.removeChild( document.querySelector( '.spiro' ) );
+					
+					document.body.appendChild(
+						drawIt(
+							w, h, r,
+							[
+								//Math.PI / 3,
+								//Math.PI / 5,
+								//Math.PI
+							]
+						)
 					);
-			
-			requestAnimationFrame(()=>{ p.setAttribute( 'stroke-dashoffset', 0 ); });
-			
-			svg.appendChild( p );
-			
-			document.body.appendChild( svg );
+					
+				}
+			);
 			
 		}
 	);
+	
+	function drawIt( w, h, r, rot ) {
+		
+		const	vals	= document.querySelector( 'input' ).value.split( ',' ),
+				count	= vals[ 0 ] * 1,
+				skip	= vals[ 1 ] * 1,
+				curve	= vals[ 2 ] * 1;
+				
+		
+		
+		let	z	= 100;
+		
+		const	svg	= document.createElementNS( SVG_NS, 'svg' );
+		
+		svg.setAttribute( 'class', 'spiro' );
+		svg.setAttribute( 'width', w );
+		svg.setAttribute( 'height', h );
+		
+		
+		let	pts		= getPoints( count, skip, curve ),
+			trans	= get3d2dProjection(
+						rotate3DShape(
+							pts.reduce(
+								( arr, pt ) => {
+									
+									arr.push(
+										pt[ 0 ],
+										pt[ 1 ],
+										z,
+										pt[ 2 ],
+										pt[ 3 ],
+										z
+									);
+									
+									return	arr;
+									
+								},
+								[]
+							),
+							rot,
+							[ 0, 0, z ]
+						)
+					).reduce(
+						( arr, pt, i ) => {
+							
+							if ( i % 2 ) {
+								
+								arr[ 0 ].push( pt[ 0 ], pt[ 1 ] );
+								
+							} else {
+								
+								arr.unshift( [ pt[ 0 ], pt[ 1 ] ] );
+								
+							}
+							
+							return	arr;
+							
+						},
+						[]
+					).reverse();
+		
+		
+		
+		let	p	= getPath(
+					{
+						points		: trans,
+						centerX		: w / 2,
+						centerY		: h / 2,
+						radius		: r,
+						curvature	: 1
+					}
+				);
+		
+		requestAnimationFrame(()=>{ p.setAttribute( 'stroke-dashoffset', 0 ); });
+		
+		svg.appendChild( p );
+		
+		return	svg;
+		
+	}
 	
 	function getPath(
 		{

@@ -37,7 +37,7 @@ fadeIn( $o = 1, $t = $time-fade-default, $d = 0s )
 	padding	0
 
 html
-	animation			wipeInBg 1s linear
+	animation			wipeInBg 0.5s linear
 	background-color	$color-bg
 	background-image	linear-gradient( 180deg, #fff1 0, #fff1 1px, transparent 1px, transparent 100% )
 	background-position	center center
@@ -166,7 +166,7 @@ $dim-hex	= 16 * 7;
 @media ( orientation : portrait )
 	.content
 		h1
-			font-size	$dim-spacing
+			font-size	$dim-spacing-l
 		
 
 
@@ -180,16 +180,18 @@ $dim-wiggle	= 8 * 16;
 		fill			none
 		//filter			url(#smallglow)
 		stroke			url(#blue-pink)
-		stroke-opacity	0.3
+		stroke-linejoin	round
+		stroke-opacity	0.33
 		stroke-width	2
 		&.wiggly
 			filter				none
+			stroke				url(#blue-pink)
+			stroke-opacity		0.66
 			
-			animation			tinydragons 10s linear infinite
+			animation			tinydragons 16s linear infinite
 			//							1			27				28			42				43			75
 			stroke-dasharray	$dim-wiggle $dim-wiggle * 26  $dim-wiggle $dim-wiggle * 14  $dim-wiggle $dim-wiggle * 32
-			stroke-width		1
-			stroke-opacity		1
+			stroke-width		2
 	.hexbox
 		fadeIn( 0.33 )
 		// fill set to hexgrid pattern in JS
